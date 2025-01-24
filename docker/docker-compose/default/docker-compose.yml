@@ -8,6 +8,10 @@ services:
       - ./nginx/error.log:/etc/nginx/error_log.log
       - ./nginx/cache/:/etc/nginx/cache
       - /etc/letsencrypt/:/etc/letsencrypt/
+      # If desired mount a location to use for letsencrypt autorenew using the webroot plugin e.g.
+      # - type: bind                      #allow certbot to write into the docker container without restarting anything
+      #   source:  /usr/share/nginx/html/ #default webroot location on ubuntu, this can be anywhere that is mountable and docker will have perms to access
+      #   target: /etc/nginx/html         #default webroot inside the nginx:latest container at time of commit, needs to match to a root in an nginx.conf location block
     ports:
       - 80:80
       - 443:443
