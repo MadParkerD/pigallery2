@@ -12,6 +12,8 @@ services:
       # - type: bind                      #allow certbot to write into the docker container without restarting anything
       #   source:  /usr/share/nginx/html/ #default webroot location on ubuntu, this can be anywhere that is mountable and docker will have perms to access
       #   target: /etc/nginx/html         #default webroot inside the nginx:latest container at time of commit, needs to match to a root in an nginx.conf location block
+      # # # # Example certbot command to set up autorenew, webroot path needs to match the source of the bind above: 
+      # # # # # certbot certonly --webroot --webroot-path /usr/share/nginx/html -d <YOUR_DOMAIN_HERE>
     ports:
       - 80:80
       - 443:443
